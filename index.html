@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Franck Fongang</title>
+    <style>
+      .typewriter h3 {
+        overflow: hidden;
+        border-right: 0.15em solid black;
+        white-space: nowrap;
+        letter-spacing: 0.05em;
+        animation: typing 3s steps(30, end), blink-caret 0.75s step-end 5;
+      }
+
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 50ch; }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: black; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="typewriter" id="app">
+      <main>
+        <h3 id="learn">
+          So, you want to learn about Franck?
+        </h3>
+        <h3 id="toSay">
+          Ummmh what can i say?
+        </h3>
+        <h3 id="fetch">
+          fetch('api/Franck/description?max=3')
+        </h3>
+        <h3 id="quality-1" style="display: none;">
+          He’s incredibly relentless and dedicated.
+        </h3>
+        <h3 id="quality-2" style="display: none;">
+          His self-learning skills and creativity are unmatched.
+        </h3>
+        <h3 id="quality-3" style="display: none;">
+          He's the most friendly person even though he doesn't look like it.
+        </h3>
+        <h3 id="end-message1" style="display: none;">
+          There's so much to say about Franck that I could go all day.
+        </h3>
+        <h3 id="end-message2" style="display: none;">
+          There’s so much more to discover—let’s dive into Franck’s story!
+        </h3>
+      </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
