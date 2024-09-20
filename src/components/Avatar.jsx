@@ -1,28 +1,52 @@
 import React, { useEffect, useRef } from 'react';
 import { useGraph } from '@react-three/fiber';
-import { Gltf, useAnimations, useFBX, useGLTF } from '@react-three/drei';
+import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
 import { SkeletonUtils } from 'three-stdlib';
 
 export function Avatar(props) {
+  const { animation } = props;
+  // const { headFollow, cursorFollow, wireframe } = useControls({
+  //   headFollow: false,
+  //   cursorFollow: false,
+  //   wireframe: false,
+  // });
+
   const group = useRef();
   const { scene: avatarScene } = useGLTF('models/avatar.glb');
   const clone = React.useMemo(() => SkeletonUtils.clone(avatarScene), [avatarScene]);
   const { nodes, materials } = useGraph(clone);
 
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
+  const { animations: idleAnimation } = useFBX("animations/Idle.fbx");
+  const { animations: fallingAnimation } = useFBX("animations/Falling.fbx");
+  
   typingAnimation[0].name = "Typing";
+  idleAnimation[0].name = "Idle";
+  fallingAnimation[0].name = "Falling";
 
-  const { actions } = useAnimations(typingAnimation, group);
+  const { actions } = useAnimations(
+    [typingAnimation[0], idleAnimation[0], fallingAnimation[0]], 
+    group
+  );
 
   useEffect(() => {
-    actions["Typing"].reset().play();
-  }, [actions]);
+    if (animation === "Typing") {
+      actions[animation].reset().play();
+    } else if (actions[animation]) {
+      actions[animation].reset().fadeIn(0.5).play();
+    }
+    return () => {
+      if (actions[animation]) {
+        actions[animation].fadeOut(0.5);
+      }
+    };
+  }, [animation, actions]);
 
   return (
     <>
-    <group {...props} ref={group} dispose={null}>
+    <group {...props} ref={group} dispose={null} scale={[1.7, 1.8, 1.5]}>
       
-      <group rotation-x={-Math.PI / 2} position={[-1.3, -1.3, 2]} rotation={[0, 0, -1.5]}> 
+      <group rotation-x={-Math.PI / 2} position={[-0.8, -1.0, 1]} rotation={[0, 0, -1.5]}> 
         <primitive object={nodes.Hips} />
         <skinnedMesh geometry={nodes.Wolf3D_Hair.geometry} material={materials.Wolf3D_Hair} skeleton={nodes.Wolf3D_Hair.skeleton} />
         <skinnedMesh geometry={nodes.Wolf3D_Glasses.geometry} material={materials.Wolf3D_Glasses} skeleton={nodes.Wolf3D_Glasses.skeleton} />
