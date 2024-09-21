@@ -33,8 +33,8 @@ function App() {
               restDelta: 0.0001,
             }}>
               <Canvas shadows camera={{ position: [0, 2, 4.5], fov: 100 }}>
-                <ScrollControls pages={4} damping={0.1}>
-                  <ScrollManager section={section} onSectionChange={setSection}/>
+                <ScrollControls pages={5} damping={0.1}>
+                  {/* <ScrollManager section={section} onSectionChange={setSection}/> */}
                   <Scroll>
                     <Experience section={section} menuOpened={menuOpened}/>
                   </Scroll>

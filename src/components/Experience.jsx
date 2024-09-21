@@ -5,8 +5,6 @@ import { motion } from "framer-motion-3d";
 import { framerMotionConfig } from "../config";
 import { animate, useMotionValue } from 'framer-motion';
 import { Avatar } from './Avatar';
-import * as THREE from 'three';
-import Section from './Section';
 
 export default function Experience(props) {
   const { section, menuOpened } = props;
@@ -59,7 +57,7 @@ export default function Experience(props) {
         }}
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
-        <Float>
+        {/* <Float>
           <mesh position={[1, -3, -15]} scale={[2, 2, 2]}>
             <sphereGeometry />
             <MeshDistortMaterial
@@ -94,10 +92,10 @@ export default function Experience(props) {
               color={"blue"}
             />
           </mesh>
-        </Float>
-        <group scale={[2, 2, 2]} position-y={-1.5}>
+        </Float> */}
+        {/* <group scale={[2, 2, 2]} position-y={-1.5}>
           <Avatar animation={section === 0 ? (section === 1 ? "Falling" : "" ) : "Idle"} />
-        </group>
+        </group> */}
       </motion.group>
       
     </>

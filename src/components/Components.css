@@ -66,6 +66,11 @@
     margin-top: 4rem; 
 }
 
+.skill-display {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .skills-title,
 .languages-title {
   font-size: 3rem; 
