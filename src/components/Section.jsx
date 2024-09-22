@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import "./Components.css";
 
 export default function Section(props) {
     const { children } = props;
