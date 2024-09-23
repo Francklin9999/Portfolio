@@ -71,8 +71,9 @@
 
 .aboutSection-description {
     font-size: 1.125rem; 
-    color: #4B5563;
-    background-color: white;
+    color: #0f1013;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
     padding: 0.5rem; 
     margin-top: 1rem;
 }
@@ -348,6 +349,8 @@
   background-color: #eef2ff; 
   transition: opacity 1s ease; 
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .loading-fade-in {

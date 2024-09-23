@@ -21,6 +21,7 @@ export default function LoadingScreen(props) {
             </div>
             <div className="loading-overlay">Franck Fongang</div>
         </div>
+        <p>Loading...</p>
         </div>
     );
 }

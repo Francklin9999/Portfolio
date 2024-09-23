@@ -4,12 +4,7 @@ import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
 import { SkeletonUtils } from 'three-stdlib';
 
 export function Avatar(props) {
-  const { animation } = props;
-  // const { headFollow, cursorFollow, wireframe } = useControls({
-  //   headFollow: false,
-  //   cursorFollow: false,
-  //   wireframe: false,
-  // });
+  const { animation, positionAvatar, rotationAvatar, scaleAvatar } = props;
 
   const group = useRef();
   const { scene: avatarScene } = useGLTF('models/avatar.glb');
@@ -33,7 +28,7 @@ export function Avatar(props) {
     if (Object.keys(actions).length > 0) {
       if (animation === "Typing") {
         actions[animation].reset().play();
-      } else if (actions[animation]) {
+      } else if (animation === "Idle") {
         actions[animation].reset().fadeIn(0.5).play();
       }
     }
@@ -47,9 +42,9 @@ export function Avatar(props) {
 
   return (
     <>
-    <group {...props} ref={group} dispose={null} scale={[1.7, 1.8, 1.5]}>
+    <group {...props} ref={group} dispose={null} scale={[scaleAvatar[0], scaleAvatar[1], scaleAvatar[2]]}>
       
-      <group rotation-x={-Math.PI / 2} position={[-0.8, -1.0, 1]} rotation={[0, 0, -1.5]}> 
+      <group rotation-x={-Math.PI / 2} position={[positionAvatar[0], positionAvatar[1], positionAvatar[2]]} rotation={[rotationAvatar[0], rotationAvatar[1], rotationAvatar[2]]}> 
         <primitive object={nodes.Hips} />
         <skinnedMesh geometry={nodes.Wolf3D_Hair.geometry} material={materials.Wolf3D_Hair} skeleton={nodes.Wolf3D_Hair.skeleton} />
         <skinnedMesh geometry={nodes.Wolf3D_Glasses.geometry} material={materials.Wolf3D_Glasses} skeleton={nodes.Wolf3D_Glasses.skeleton} />

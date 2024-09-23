@@ -1,38 +1,57 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './home.css';
 
 function Home() {
-  const [visibleMessage, setVisibleMessage] = useState(0);
+
+  function waitForTimeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timers = [
-      setTimeout(() => setVisibleMessage(1), 7000),
-      setTimeout(() => setVisibleMessage(2), 13000),
-      setTimeout(() => setVisibleMessage(3), 15000),
-      setTimeout(() => setVisibleMessage(4), 18000),
-      setTimeout(() => setVisibleMessage(5), 20000),
-      setTimeout(() => navigate('/index'), 21000),
-    ];
+  const text = [
+    ">> Curious about who Franck is? Let me tell you!",
+    ">> He’s the master of turning ideas into code.",
+    ">> Spoiler alert: He created multiple crazy programs!",
+    ">> I bet you’re intrigued by what he can create.",
+    ">> Let's dive into Franck's world!",
+  ];
 
-    return () => timers.forEach(timer => clearTimeout(timer));
-  }, []);
+  const isTyping = useRef(false);
+
+  async function typeLine(line) {
+    for (let i = 0; i < line.length; i++) {
+      document.getElementById("animatedText").innerHTML += line[i];
+      await waitForTimeout(85); 
+    }
+    document.getElementById("animatedText").innerHTML += '\n' + '<br class="line-break"/>'; 
+    await waitForTimeout(1000); 
+  }
+
+  async function type() {
+    if (isTyping.current) return; 
+    isTyping.current = true;
+
+    for (let i = 0; i < text.length; i++) { 
+      await typeLine(text[i]); 
+    }
+
+    isTyping.current = false;
+    navigate('/index');
+  }
+
+    useEffect(() => {
+      type();
+    }, []);
 
   return (
-    <div className="typewriter">
-      <main>
-        <h3 id="learn">So, you want to learn about Franck?</h3>
-        <h3 id="toSay">Ummmh what can I say?</h3>
-        {visibleMessage >= 1 && <h3 id="quality-1">He’s incredibly relentless and dedicated.</h3>}
-        {visibleMessage >= 2 && <h3 id="quality-2">His self-learning skills and creativity are unmatched.</h3>}
-        {visibleMessage >= 3 && <h3 id="quality-3">He's the most friendly person even though he doesn't look like it.</h3>}
-        {visibleMessage >= 4 && <h3 id="end-message1">There's so much to say about Franck that I could go all day.</h3>}
-        {visibleMessage >= 5 && <h3 id="end-message2">There’s so much more to discover—let’s dive into Franck’s story!</h3>}
-      </main>
+    <div className="home-container">
+      <div className="animated-text" id="animatedText"></div>
+      <div className="cursor" id="cursor"></div>
     </div>
   );
-};
+}
+
 
 export default Home;

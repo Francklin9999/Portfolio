@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, MeshWobbleMaterial, CameraControls, Environment, Gltf, useScroll } from '@react-three/drei';
+import { Environment,  useScroll } from '@react-three/drei';
 import { motion } from "framer-motion-3d";
 import { framerMotionConfig } from "../config";
 import { animate, useMotionValue } from 'framer-motion';
@@ -18,8 +18,6 @@ export default function Experience(props) {
   const officeScaleRatio = Math.max(0.5, Math.min(0.9 * responsiveRatio, 0.9));
 
   const [section, setSection] = useState(0);
-  
-  let firstRender = true;
 
   const cameraPositionX = useMotionValue();
   const cameraLookAtX = useMotionValue();
@@ -33,24 +31,29 @@ export default function Experience(props) {
     });
   }, [menuOpened]);
 
-  const characterContainerAboutRef = useRef();
-
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
-  useEffect(() => {
-    setCharacterAnimation("Falling");
-    setTimeout(() => {
-      setCharacterAnimation(section === 0 ? "Typing" : "Standing");
-    }, 600);
-  }, [section]);
 
-  // useFrame((state) => {
-  //   if (!firstRender) {
-  //     state.camera.position.x = cameraPositionX.get();
-  //     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
-  //   } else {
-  //     firstRender = false;
-  //   }
-  // });
+  const [positionAvatar, setPositionAvatar] = useState([-0.7, -1.0, 1]);
+  const [rotationAvatar, setRotationAvatar] = useState([0, 0, -1.5]);
+  const [scaleAvatar, setScaleAvatar] = useState([1.7, 1.8, 1.5]);
+
+  useEffect(() => {
+    if (section !== 0) {
+      console.log(7);
+      setPositionAvatar([1, -42, 0]);
+      setRotationAvatar([0, 0, -0.8]);
+      setScaleAvatar([1.7, 1.8, 1.5]);
+      setCharacterAnimation("Idle");
+    } else {
+      setPositionAvatar([-0.7, -1.0, 1]);
+      setRotationAvatar([0, 0, -1.5]);
+      setScaleAvatar([1.7, 1.8, 1.5]);
+      setCharacterAnimation("Typing");
+    }
+    // setTimeout(() => {
+    //   setCharacterAnimation(section === 0 ? "Typing" : (section === 7 ? "Idle" : ""));
+    // }, 600);
+  }, [section]);
 
   useFrame((state) => {
     let curSection = Math.floor(data.scroll.current * data.pages);
@@ -65,6 +68,7 @@ export default function Experience(props) {
 
     state.camera.position.x = cameraPositionX.get();
     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
+
   });
 
   return (
@@ -80,7 +84,7 @@ export default function Experience(props) {
         }}
       >
         <Scene />
-        <Avatar animation={characterAnimation}/>
+        <Avatar animation={characterAnimation} positionAvatar={positionAvatar} rotationAvatar={rotationAvatar} scaleAvatar={scaleAvatar} />
       </motion.group>
       <motion.group
         position={[0, -1.5, -10]}
@@ -92,6 +96,7 @@ export default function Experience(props) {
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
       </motion.group>
       <Projects />
+      
     </>
   );
 }

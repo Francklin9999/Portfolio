@@ -1,8 +1,11 @@
 import React from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, useVideoTexture } from '@react-three/drei'
 
 export default function Scene(props) {
-  const { nodes, materials } = useGLTF('models/scene.glb')
+  const { section } = props;
+  const { nodes, materials } = useGLTF('models/scene.glb');
+  const textureVSCode = useVideoTexture("textures/vscode.mp4");
+  
   return (
     <group {...props} dispose={null} position={[0, -2, 0]} rotation={[0.2, 1.58, -0.2]}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.019}>
@@ -17,10 +20,10 @@ export default function Scene(props) {
           </group>
           <group position={[234.117, 50, 142.319]} rotation={[Math.PI / 2, 0, 0.698]} scale={-0.576}>
             <group position={[0.065, 7.402, 1.145]} rotation={[0, 0, -0.005]} scale={1.116}>
-              <mesh geometry={nodes.Box010_water_0.geometry} material={materials['water.001']} position={[9.691, -6.067, 0.072]} />
+              <mesh geometry={nodes.Box010_water_0.geometry} material={materials['water.001']} position={[9.69, -6.067, 0.072]} />
             </group>
             <group position={[-16.115, 34.101, -8.616]} rotation={[-1.567, 1.033, -3.138]} scale={0.177}>
-              <group position={[-318.837, 378.588, 117.323]} rotation={[-2.715, 0.198, 2.718]}>
+              <group position={[-318.836, 378.588, 117.323]} rotation={[-2.715, 0.198, 2.718]}>
                 <mesh geometry={nodes.Calla__Lilia_stem_0.geometry} material={materials['Lilia_stem.001']} />
                 <mesh geometry={nodes['Calla__Material_#0_0'].geometry} material={materials['Material_0.001']} />
               </group>
@@ -68,6 +71,9 @@ export default function Scene(props) {
             <mesh geometry={nodes['Line012_Material_#62_0'].geometry} material={materials['Material_62.001']} position={[24.234, -0.153, -28.305]} />
             <mesh geometry={nodes['Line012_Material_#63_0'].geometry} material={materials['Material_63.001']} position={[24.23, -0.15, -28.3]} />
           </group>
+          <mesh geometry={nodes.Screen.geometry} position={[-130.259, 76.774, -150.808]} rotation={[-Math.PI / 2, 0, 0]}>
+            <meshBasicMaterial map={textureVSCode} toneMapped={false} />
+          </mesh>
           <group position={[-70.623, 63.75, -93.395]} rotation={[0, -1.569, 0]}>
             <mesh geometry={nodes['Object008_Material_#2097633444_0'].geometry} material={materials['Material_2097633444.001']} position={[24.23, -0.15, -28.3]} />
           </group>
@@ -94,7 +100,6 @@ export default function Scene(props) {
           <mesh geometry={nodes.Group_021_vray_Color_008_0.geometry} material={materials['vray_Color_008.001']} position={[-49.258, 91.013, 164.7]} rotation={[-Math.PI / 2, 0, -Math.PI]} />
           <mesh geometry={nodes['Object001_Material_#2097633433_0'].geometry} material={materials['Material_2097633433.001']} rotation={[-Math.PI / 2, 0, 0]} />
           <mesh geometry={nodes['Object004_Material_#2097633466_0'].geometry} material={materials['Material_2097633466.001']} position={[-130.259, 76.774, -150.808]} rotation={[-Math.PI / 2, 0, 0]} />
-          <mesh geometry={nodes['Object007_vray_<auto>23_0'].geometry} material={materials['vray_auto23.001']} position={[-130.259, 76.774, -150.808]} rotation={[-Math.PI / 2, 0, 0]} />
           <mesh geometry={nodes['Object009_Material_#2097633435_0'].geometry} material={materials['Material_2097633435.001']} position={[-49.258, 91.013, 164.7]} rotation={[-Math.PI / 2, 0, -Math.PI]} />
           <mesh geometry={nodes['Object010_Material_#2097633440_0'].geometry} material={materials['Material_2097633440.001']} position={[-49.258, 91.013, 164.7]} rotation={[-Math.PI / 2, 0, -Math.PI]} />
           <mesh geometry={nodes['Object011_Material_#2097633436_0'].geometry} material={materials['Material_2097633436.001']} position={[-49.258, 91.013, 164.7]} rotation={[-Math.PI / 2, 0, -Math.PI]} />
