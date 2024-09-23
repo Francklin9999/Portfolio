@@ -1,14 +1,23 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, MeshWobbleMaterial, CameraControls, Environment, Gltf } from '@react-three/drei';
+import { Float, MeshDistortMaterial, MeshWobbleMaterial, CameraControls, Environment, Gltf, useScroll } from '@react-three/drei';
 import { motion } from "framer-motion-3d";
 import { framerMotionConfig } from "../config";
 import { animate, useMotionValue } from 'framer-motion';
 import { Avatar } from './Avatar';
+import Projects from './Projects';
+import Scene from './Scene';
 
 export default function Experience(props) {
-  const { section, menuOpened } = props;
+  const { menuOpened } = props;
   const { viewport } = useThree();
+  const data = useScroll();
+
+  const isMobile = window.innerWidth < 768;
+  const responsiveRatio = viewport.width / 12;
+  const officeScaleRatio = Math.max(0.5, Math.min(0.9 * responsiveRatio, 0.9));
+
+  const [section, setSection] = useState(0);
   
   let firstRender = true;
 
@@ -24,18 +33,42 @@ export default function Experience(props) {
     });
   }, [menuOpened]);
 
+  const characterContainerAboutRef = useRef();
+
+  const [characterAnimation, setCharacterAnimation] = useState("Typing");
+  useEffect(() => {
+    setCharacterAnimation("Falling");
+    setTimeout(() => {
+      setCharacterAnimation(section === 0 ? "Typing" : "Standing");
+    }, 600);
+  }, [section]);
+
+  // useFrame((state) => {
+  //   if (!firstRender) {
+  //     state.camera.position.x = cameraPositionX.get();
+  //     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
+  //   } else {
+  //     firstRender = false;
+  //   }
+  // });
+
   useFrame((state) => {
-    if (!firstRender) {
+    let curSection = Math.floor(data.scroll.current * data.pages);
+
+    if (curSection > 3) {
+      curSection = 3;
+    }
+
+    if (curSection !== section) {
+      setSection(curSection);
+    }
+
     state.camera.position.x = cameraPositionX.get();
     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
-    } else {
-      firstRender = false;
-    }
   });
 
   return (
     <>
-      {/* <CameraManager /> */}
       <Environment preset="sunset" />
       <ambientLight intensity={0.8} color="pink" />
       <motion.group
@@ -46,8 +79,8 @@ export default function Experience(props) {
           y: section === 0 ? 0 : -1,
         }}
       >
-        <Gltf src="models/scene.glb" position={[0, -2, 0]} rotation={[0.2, 1.58, -0.2]} />
-        <Avatar animation="Typing"/>
+        <Scene />
+        <Avatar animation={characterAnimation}/>
       </motion.group>
       <motion.group
         position={[0, -1.5, -10]}
@@ -57,74 +90,9 @@ export default function Experience(props) {
         }}
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
-        {/* <Float>
-          <mesh position={[1, -3, -15]} scale={[2, 2, 2]}>
-            <sphereGeometry />
-            <MeshDistortMaterial
-              opacity={0.8}
-              transparent
-              distort={0.4}
-              speed={4}
-              color={"red"}
-            />
-          </mesh>
-        </Float>
-        <Float>
-          <mesh scale={[3, 3, 3]} position={[3, 1, -18]}>
-            <sphereGeometry />
-            <MeshDistortMaterial
-              opacity={0.8}
-              transparent
-              distort={1}
-              speed={5}
-              color="yellow"
-            />
-          </mesh>
-        </Float>
-        <Float>
-          <mesh scale={[1.4, 1.4, 1.4]} position={[-3, -1, -11]}>
-            <boxGeometry />
-            <MeshWobbleMaterial
-              opacity={0.8}
-              transparent
-              factor={1}
-              speed={5}
-              color={"blue"}
-            />
-          </mesh>
-        </Float> */}
-        {/* <group scale={[2, 2, 2]} position-y={-1.5}>
-          <Avatar animation={section === 0 ? (section === 1 ? "Falling" : "" ) : "Idle"} />
-        </group> */}
       </motion.group>
-      
+      <Projects />
     </>
   );
 }
 
-const CameraManager = () => {
-  return (
-    <CameraControls
-      minZoom={1}
-      maxZoom={3}
-      minPolarAngle={Math.PI / 2} 
-      maxPolarAngle={Math.PI / 2} 
-      minAzimuthAngle={-Math.PI / 4.5} 
-      maxAzimuthAngle={Math.PI / 4.5} 
-      enablePan={false} 
-      enableRotate={true} 
-      enableZoom={true} 
-      zoomSpeed={1} 
-      polarRotateSpeed={0} 
-      azimuthalRotateSpeed={0.3} 
-      mouseButtons={{
-        left: 1, 
-        wheel: 1,
-      }}
-      touches={{
-        one: null, 
-        two: 1, 
-      }}
-    />
-  );
-}

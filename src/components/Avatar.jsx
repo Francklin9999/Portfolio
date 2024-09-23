@@ -16,7 +16,7 @@ export function Avatar(props) {
   const clone = React.useMemo(() => SkeletonUtils.clone(avatarScene), [avatarScene]);
   const { nodes, materials } = useGraph(clone);
 
-  const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
+  const { animations: typingAnimation } = useFBX("animations/test.fbx");
   const { animations: idleAnimation } = useFBX("animations/Idle.fbx");
   const { animations: fallingAnimation } = useFBX("animations/Falling.fbx");
   
@@ -30,17 +30,20 @@ export function Avatar(props) {
   );
 
   useEffect(() => {
-    if (animation === "Typing") {
-      actions[animation].reset().play();
-    } else if (actions[animation]) {
-      actions[animation].reset().fadeIn(0.5).play();
+    if (Object.keys(actions).length > 0) {
+      if (animation === "Typing") {
+        actions[animation].reset().play();
+      } else if (actions[animation]) {
+        actions[animation].reset().fadeIn(0.5).play();
+      }
     }
-    // return () => {
-    //   if (actions[animation]) {
-    //     actions[animation].fadeOut(0.5);
-    //   }
-    // };
-  }, [animation, actions]);
+  
+    return () => {
+      if (actions[animation]) {
+        actions[animation].fadeOut(0.5);
+      }
+    };
+  }, [animation, actions]);  
 
   return (
     <>

@@ -14,9 +14,9 @@ export default function Menu(props) {
         <div className={`menu-container ${menuOpened ? "menu-open" : "menu-closed"}`}>
           <div className="menu-content">
             <MenuButton label="About" onClick={() => onSectionChange(0)} />
-            <MenuButton label="Skills" onClick={() => onSectionChange(1)} />
-            <MenuButton label="Projects" onClick={() => onSectionChange(2)} />
-            <MenuButton label="Contact" onClick={() => onSectionChange(3)} />
+            <MenuButton label="Skills" onClick={() => onSectionChange(2)} />
+            <MenuButton label="Projects" onClick={() => onSectionChange(6)} />
+            <MenuButton label="Contact" onClick={() => onSectionChange(7)} />
           </div>
         </div>
       </>

@@ -10,9 +10,12 @@ import ScrollManager from './ScrollManager';
 import Menu from './components/Menu';
 import Cursor from './components/Cursor';
 import { Leva } from 'leva';
+import { framerMotionConfig } from './config';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const [section, setSection] = useState(0);
+  const [started, setStarted] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
 
   useEffect(() => {
@@ -25,21 +28,19 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/index" element={
           <>
+            <LoadingScreen started={started} setStarted={setStarted} />
             <MotionConfig transition={{
-              type: "spring",
-              mass: 5,
-              stiffness: 500,
-              damping: 50,
-              restDelta: 0.0001,
+              ...framerMotionConfig,
             }}>
               <Canvas shadows camera={{ position: [0, 2, 4.5], fov: 100 }}>
-                <ScrollControls pages={7} damping={0.1} >
-                  {/* <ScrollManager section={section} onSectionChange={setSection}/> */}
+                <color attach="background" args={["#e6e7ff"]} />
+                <ScrollControls pages={8} damping={0.1} >
+                  <ScrollManager section={section} onSectionChange={setSection}/>
                   <Scroll>
                     <Experience section={section} menuOpened={menuOpened}/>
                   </Scroll>
                   <Scroll html>
-                    <Interface />
+                    <Interface setSection={setSection} />
                   </Scroll>
                 </ScrollControls>
               </Canvas>

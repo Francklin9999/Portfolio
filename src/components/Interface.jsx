@@ -1,17 +1,17 @@
+import { useAtom } from "jotai";
 import { motion } from "framer-motion-3d";
+import { currentProjectAtom, projects } from "./Projects";
 import Section from "./Section";
 import QuebecFlag from '../assets/quebec.svg';
 import AmericanFlag from '../assets/unitedstates.svg';
+import { useForm, ValidationError } from '@formspree/react';
 import './Components.css';
-import { useFrame, useThree } from "@react-three/fiber";
-import { atom, useAtom } from "jotai";
-import { useEffect, useRef } from "react";
-import { animate, useMotionValue } from "framer-motion";
+export default function Interface(props) {
+  const { setSection } = props;
 
-export default function Interface() {
     return (
         <div className="container">
-            <AboutSection />
+            <AboutSection setSection={setSection} />
             <EducationSection />
             <SkillsSection />
             <ProjectsSection />
@@ -20,7 +20,9 @@ export default function Interface() {
     );
 };
 
-const AboutSection = () => {
+const AboutSection = (props) => {
+  const { setSection } = props;
+
   return (
     <Section>
         <h1 className="aboutSection-Intro">Hi, I'm <br /> <span className="aboutSection-Intro-Name">Franck Fongang</span></h1>
@@ -42,6 +44,7 @@ const AboutSection = () => {
             I'm a software developer with a passion for building <br /> innovative and user-friendly applications.
         </motion.p>
         <motion.button 
+          onClick={() => setSection(7)}
             className="aboutSection-button"
             initial={{
                 opacity: 0,
@@ -78,7 +81,7 @@ const EducationSection = () => {
         }}
         transition={{
           duration: 0.5,
-          delay: 2.5,
+          delay: 1,
         }}
       >
         <div className="education-grid">
@@ -900,127 +903,58 @@ const SkillsSection = () => {
       </Section>
     );
 };
-  
-const projects = [
-  {
-    title: "BusTracker",
-    url: "",
-    description: "",
-    img: "",
-    technologies: "Go, Gin, Angular, Typescript, Docker, AWS, Websocket, REST APIs",
-  },
-  {
-    title: "FlightScraper",
-    url: "",
-    description: "",
-    img: "",
-    technologies: "NodeJS, ExpressJS, MongoDB, Puppeteer, NextJS, React, Typescript, Docker, REST APIs",
-  },
-  {
-    title: "AI Powered WebScraper",
-    url: "",
-    description: "",
-    img: "",
-    technologies: "Java, SpringBoot, Selenium, Ollama, LLMs, Docker, REST APIS",
-  },
-  {
-    title: "Sorting Algorithm",
-    url: "",
-    description: "",
-    img: "",
-    technologies: "Java, BubbleSort, HeapSort, InsertionSort, MergeSort, SelectionSort, TreeSort",
-  },
-  {
-    title: "Data Dashboard",
-    url: "",
-    description: "",
-    img: "",
-    technologies: "Python, Pandas, Dash, Plotly, StatsModels, Seaborn, Excel",
-  },
-  {
-    title: "Path Finder",
-    url: "",
-    description: "",
-    img: "",
-    technologies: "Python, Pygame",
-  },
-];
 
-const Project = (props) => {
-  const { project, highlighted } = props;
-
-  const background = useRef();
-  const bgOpacity = useMotionValue(0.4);
-
-  useEffect(() => {
-    animate(bgOpacity, highlighted ? 0.7 : 0.4)
-  }, [highlighted]);
-
-  useFrame(() => {
-    background.current.material.opacity = bgOpacity.get();
-  });
-
-  return (
-    <group {...props}>
-      <mesh position-z={-0.001} onClick={() => window.open(project.url, "_blank")} ref={background}>
-        <planeGeometry args={[2.2, 2]} />
-        <meshBasicMaterial color="black" transparent opacity={0.4} />
-      </mesh>
-      <Image scale={[2, 1.2, 1]} url={project.image} toneMapped={false} position-y={0.3} />
-      <Text maxWidth={2} anchorX={"left"} anchorY={"top"} fontSize={0.2} position={[-1, -0.4, 0]}>{project.title.toUpperCase()}</Text>
-      <Text maxWidth={2} anchorX={"left"} anchorY={"top"} fontSize={0.1} position={[-1, -0.6, 0]}>{project.title.toUpperCase()}</Text>
-    </group>
-  );
-};
-
-const currentProjectAtom = atom(Math.floor(projects.length / 2));
 const ProjectsSection = () => {
-  const { viewport } = useThree();
-  const [ currentProject ] = useAtom(currentProjectAtom);
+  const [ currentProject, setCurrentProject ] = useAtom(currentProjectAtom);
+
+  const nextProject = () => {
+    setCurrentProject((currentProject + 1) % projects.length);
+  };
+
+  const previousProject = () => {
+    setCurrentProject((currentProject - 1 + projects.length) % projects.length);
+  };
 
   return (
     <Section>
-      {/* <group position-y={-viewport.height * 2 + 1}>
-        {projects.map((project, index) => (
-          <motion.group key={"project_" + index} position={[index * 2.5, 0, -3]}>
-            <Project project={project} highlighted={index === currentProject} />
-          </motion.group>
-        ))}
-      </group> */}
+      <div className="project-container">
+        <button className="project-button" onClick={previousProject}>
+          ← Previous
+        </button>
+        <h2 className="project-title">Projects</h2>
+        <button className="project-button" onClick={nextProject}>
+          Next →
+        </button>
+      </div>
     </Section>
   );
 };
 
 const ContactSection = () => {
-    return (
-      <Section>
-        <h2 className="contact-title">Contact me</h2>
-        <div className="contact-form-container">
-          <form>
-            <label htmlFor="name" className="form-label">Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              className="form-input"
-            />
-            <label htmlFor="email" className="form-label">Email</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              className="form-input"
-            />
-            <label htmlFor="message" className="form-label">Message</label>
-            <textarea
-              name="message"
-              id="message"
-              className="form-textarea"
-            />
-            <button className="submit-button">Submit</button>
-          </form>
-        </div>
-      </Section>
-    );
-};
+  const [state, handleSubmit] = useForm("meojbrgo");
   
+  return (
+    <Section>
+      <h2 className="contact-title">Contact me</h2>
+      <div className={`contact-form ${state.succeeded ? 'success' : ''}`}>
+        {state.succeeded ? (
+          <p className="success-message">Thanks for your message!</p>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name" className="form-label">Name</label>
+            <input type="text" name="name" id="name" className="form-input" />
+            <label htmlFor="email" className="form-label">Email</label>
+            <input type="email" name="email" id="email" className="form-input" />
+            <ValidationError className="error-message" prefix="Email" field="email" errors={state.errors} />
+            <label htmlFor="message" className="form-label">Message</label>
+            <textarea name="message" id="message" className="form-textarea" />
+            <ValidationError className="error-message" errors={state.errors} />
+            <button disabled={state.submitting} className="submit-button">Submit</button>
+          </form>
+        )}
+      </div>
+    </Section>
+  );
+};
+
+ 
