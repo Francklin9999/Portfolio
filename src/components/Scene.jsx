@@ -2,7 +2,6 @@ import React from 'react'
 import { useGLTF, useVideoTexture } from '@react-three/drei'
 
 export default function Scene(props) {
-  const { section } = props;
   const { nodes, materials } = useGLTF('models/scene.glb');
   const textureVSCode = useVideoTexture("textures/vscode.mp4");
   

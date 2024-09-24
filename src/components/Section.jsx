@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import "./Components.css";
 
 export default function Section(props) {
-    const { children } = props;
+    const { children, mobileTop } = props;
 
     return (
         <motion.section 
-            className="section"
+            className={`section ${mobileTop ? 'mobile-top' : 'center'}`}
             initial={{
                 opacity: 0,
                 y: 50,

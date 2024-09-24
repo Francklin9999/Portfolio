@@ -74,7 +74,7 @@ export default function Experience(props) {
   return (
     <>
       <Environment preset="sunset" />
-      <ambientLight intensity={0.8} color="pink" />
+      <ambientLight intensity={0.1} color="pink" />
       <motion.group
         // position={[1.5, 2, 3]}
         // scale={[0.9, 0.9, 0.9]}

@@ -1,94 +1,148 @@
 .section {
   width: 100vw;
+  height: 100%;
   padding: 2rem;
   max-width: 1536px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: start;
+}
+
+.section.center {
   justify-content: center;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100%;
-    gap: 10px;
+.section.mobile-top {
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .screen-container.mobile-top {
+    justify-content: center;
+  }
+}
+
+.containerr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.container > div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  overflow: hidden;
 }
 
 .container-about-section {
+  top: 0;
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
-
-.education-grid {
-  display: flex;
-  width: 100vw;
-  flex-wrap: wrap;
-  gap: 5rem;
-}
-
-/* .education-grid img {
-  width: 300px;
-  height: 200px;
-} */
 
 .container-education-section {
   top: 100vh;
   height: 100vh;
-  background-color: #111827;
 }
 
 .container-skills-section {
-  top: 200vh;
-  height: 100vh;
+  top: 250vh !important;
+  height: 400vh;
+  margin: 0;
+  padding-top: 10vh;
 }
 
 .container-projects-section {
-  top: 300vh;
+  top: 600vh;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.container-contact-section {
+  top: 700vh;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
 }
 
-.container-contact-section {
-  top: 400vh;
-  height: 100vh;
+.education-section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .education-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+} */
+
+.education-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
   
 .aboutSection-Intro {
+  font-size: 2.25rem; 
+  font-weight: 800; 
+  line-height: 1.375;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .aboutSection-Intro {
     font-size: 3.75rem; 
-    font-weight: 800; 
-    line-height: 1.375;
+    margin-top: 0;
+  }
 }
 
 .aboutSection-Intro-Name {
-    background-color: white;
-    padding-left: 0.25rem; 
-    padding-right: 0.25rem;
-    font-style: italic;
+  background-color: white;
+  padding-left: 0.25rem; 
+  padding-right: 0.25rem;
+  font-style: italic;
 }
 
 .aboutSection-description {
-    font-size: 1.125rem; 
-    color: #0f1013;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 12px;
-    padding: 0.5rem; 
-    margin-top: 1rem;
+  font-size: 1.125rem; 
+  color: #0f1013;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 0.5rem; 
+  margin-top: 1rem;
 }
 
 .aboutSection-button {
-    background-color: #4F46E5; 
-    color: white;
-    padding-top: 1rem; 
-    padding-bottom: 1rem;
-    padding-left: 2rem; 
-    padding-right: 2rem;
-    border-radius: 0.5rem;
-    font-weight: bold; 
-    font-size: 1.125rem; 
+  background-color: #4F46E5; 
+  color: white;
+  padding-top: 1rem; 
+  padding-bottom: 1rem;
+  padding-left: 2rem; 
+  padding-right: 2rem;
+  border-radius: 0.5rem;
+  font-weight: bold; 
+  font-size: 1.125rem; 
+  margin-top: 1rem; 
+}
+
+@media (min-width: 768px) {
+  .aboutSection-button {
     margin-top: 4rem; 
+  }
 }
 
 .skill-display {
@@ -100,6 +154,33 @@
 .languages-title {
   font-size: 3rem; 
   font-weight: bold;
+}
+
+.language-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.language-title-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.language-title-content-first {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.language-title-content-second {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .skills-container,
@@ -170,9 +251,13 @@
   border: none; 
   color: #1f2937; 
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
-  background-color: white;
+  border: 1px solid #d1d5db;
   padding: 0.75rem;
-  transition: box-shadow 0.2s ease; 
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #9ca3af; 
 }
 
 .form-input:focus,
@@ -386,3 +471,7 @@
 .loading-overlay {
   opacity: 0.4; 
 }
+
+/* .educationSection-container {
+  
+} */

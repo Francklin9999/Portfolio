@@ -4,7 +4,7 @@ import Experience from './components/Experience';
 import Home from './home';
 import Interface from './components/Interface';
 import { Scroll, ScrollControls } from '@react-three/drei';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { MotionConfig } from "framer-motion";
 import ScrollManager from './ScrollManager';
 import Menu from './components/Menu';
@@ -37,10 +37,12 @@ function App() {
                 <ScrollControls pages={8} damping={0.1} >
                   <ScrollManager section={section} onSectionChange={setSection}/>
                   <Scroll>
-                    <Experience section={section} menuOpened={menuOpened}/>
+                    <Suspense>
+                      {started && <Experience section={section} menuOpened={menuOpened}/>}
+                    </Suspense>
                   </Scroll>
                   <Scroll html>
-                    <Interface setSection={setSection} />
+                    {started && <Interface setSection={setSection} />}
                   </Scroll>
                 </ScrollControls>
               </Canvas>
