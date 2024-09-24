@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Environment,  useScroll } from '@react-three/drei';
 import { motion } from "framer-motion-3d";
@@ -7,11 +7,13 @@ import { animate, useMotionValue } from 'framer-motion';
 import { Avatar } from './Avatar';
 import Projects from './Projects';
 import Scene from './Scene';
+import { WindowWidthContext } from '../App';
 
 export default function Experience(props) {
   const { menuOpened } = props;
   const { viewport } = useThree();
   const data = useScroll();
+  const width = useContext(WindowWidthContext);
 
   const isMobile = window.innerWidth < 768;
   const responsiveRatio = viewport.width / 12;
@@ -30,6 +32,24 @@ export default function Experience(props) {
       ...framerMotionConfig,
     });
   }, [menuOpened]);
+
+  useEffect(() => {
+    if (width < 768 && section === 0) {
+      animate(cameraPositionX, 1, {
+        ...framerMotionConfig,
+      });
+      animate(cameraLookAtX, -5, {
+        ...framerMotionConfig,
+      });
+    } else {
+      animate(cameraPositionX, 0, {
+        ...framerMotionConfig,
+        });
+        animate(cameraLookAtX, 0, {
+          ...framerMotionConfig,
+          });
+    }
+  }, [width, section]);
 
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
 
@@ -50,9 +70,6 @@ export default function Experience(props) {
       setScaleAvatar([1.7, 1.8, 1.5]);
       setCharacterAnimation("Typing");
     }
-    // setTimeout(() => {
-    //   setCharacterAnimation(section === 0 ? "Typing" : (section === 7 ? "Idle" : ""));
-    // }, 600);
   }, [section]);
 
   useFrame((state) => {

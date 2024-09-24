@@ -4,7 +4,7 @@ import Experience from './components/Experience';
 import Home from './home';
 import Interface from './components/Interface';
 import { Scroll, ScrollControls } from '@react-three/drei';
-import { Suspense, useEffect, useState } from 'react';
+import { createContext, Suspense, useEffect, useRef, useState } from 'react';
 import { MotionConfig } from "framer-motion";
 import ScrollManager from './ScrollManager';
 import Menu from './components/Menu';
@@ -13,10 +13,26 @@ import { Leva } from 'leva';
 import { framerMotionConfig } from './config';
 import LoadingScreen from './components/LoadingScreen';
 
+export const WindowWidthContext = createContext();
+
 function App() {
   const [section, setSection] = useState(0);
   const [started, setStarted] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [cameraPosition, setCameraPosition] = useState([0, 2, 4.5]);
+  const [cameraRotation, setCameraRotation] = useState([0, 0, 0]);
+  const cameraRef = useRef();
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      setWidth(newWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setMenuOpened(false);
@@ -32,13 +48,14 @@ function App() {
             <MotionConfig transition={{
               ...framerMotionConfig,
             }}>
-              <Canvas shadows camera={{ position: [0, 2, 4.5], fov: 100 }}>
+              <WindowWidthContext.Provider value={width}>
+              <Canvas shadows camera={{ position: cameraPosition, rotation: cameraRotation, fov: 100 }} onCreated={({ camera }) => (cameraRef.current = camera)}>
                 <color attach="background" args={["#e6e7ff"]} />
                 <ScrollControls pages={8} damping={0.1} >
                   <ScrollManager section={section} onSectionChange={setSection}/>
                   <Scroll>
                     <Suspense>
-                      {started && <Experience section={section} menuOpened={menuOpened}/>}
+                      {<Experience section={section} menuOpened={menuOpened}/>}
                     </Suspense>
                   </Scroll>
                   <Scroll html>
@@ -48,6 +65,7 @@ function App() {
               </Canvas>
               <Menu onSectionChange={setSection} menuOpened={menuOpened} setMenuOpened={setMenuOpened}/>
               <Cursor />
+              </WindowWidthContext.Provider>
             </MotionConfig>
             <Leva hidden />
           </>
