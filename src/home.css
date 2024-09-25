@@ -9,8 +9,8 @@
 }
 
 .animated-text {
-  margin: 0 0 0 3%;
-  align-self: center;
+  margin: 8rem 0 0 3%;
+  align-self: top;
   position: relative;
   color: white;
   font-size: 1.4rem;

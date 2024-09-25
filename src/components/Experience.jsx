@@ -49,7 +49,7 @@ export default function Experience(props) {
           ...framerMotionConfig,
           });
     }
-  }, [width, section]);
+  }, [width, section, menuOpened]);
 
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
 
