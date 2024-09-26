@@ -9,7 +9,7 @@
 }
 
 .animated-text {
-  margin: 8rem 0 0 3%;
+  margin: 6rem 0 0 3%;
   align-self: top;
   position: relative;
   color: white;
@@ -17,6 +17,12 @@
   font-family: monospace;
   white-space: pre-wrap;
   overflow: hidden; 
+}
+
+@media screen and (min-width: 768px) {
+  .animated-text{
+    margin-top: 8rem;
+  }
 }
 
 .cursor {

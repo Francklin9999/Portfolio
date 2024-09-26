@@ -112,12 +112,14 @@
   font-weight: 800; 
   line-height: 1.375;
   margin-top: 2rem;
+  color: white;
 }
 
 @media (min-width: 768px) {
   .aboutSection-Intro {
     font-size: 3.75rem; 
     margin-top: 0;
+    color: black;
   }
 }
 
@@ -126,6 +128,7 @@
   padding-left: 0.25rem; 
   padding-right: 0.25rem;
   font-style: italic;
+  color: black;
 }
 
 .aboutSection-description {
@@ -554,6 +557,17 @@
   opacity: 0.4; 
 }
 
-/* .educationSection-container {
-  
-} */
+.contacts-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.contacts-link-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}

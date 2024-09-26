@@ -15,10 +15,6 @@ export default function Experience(props) {
   const data = useScroll();
   const width = useContext(WindowWidthContext);
 
-  const isMobile = window.innerWidth < 768;
-  const responsiveRatio = viewport.width / 12;
-  const officeScaleRatio = Math.max(0.5, Math.min(0.9 * responsiveRatio, 0.9));
-
   const [section, setSection] = useState(0);
 
   const cameraPositionX = useMotionValue();
@@ -59,8 +55,7 @@ export default function Experience(props) {
 
   useEffect(() => {
     if (section !== 0) {
-      console.log(7);
-      setPositionAvatar([1, -42, 0]);
+      setPositionAvatar([2, -46, 0]);
       setRotationAvatar([0, 0, -0.8]);
       setScaleAvatar([1.7, 1.8, 1.5]);
       setCharacterAnimation("Idle");
@@ -93,9 +88,6 @@ export default function Experience(props) {
       <Environment preset="sunset" />
       <ambientLight intensity={0.1} color="pink" />
       <motion.group
-        // position={[1.5, 2, 3]}
-        // scale={[0.9, 0.9, 0.9]}
-        // rotation-y={-Math.PI / 4}
         animate={{
           y: section === 0 ? 0 : -1,
         }}

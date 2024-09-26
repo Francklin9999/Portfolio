@@ -11,16 +11,14 @@ export function Avatar(props) {
   const clone = React.useMemo(() => SkeletonUtils.clone(avatarScene), [avatarScene]);
   const { nodes, materials } = useGraph(clone);
 
-  const { animations: typingAnimation } = useFBX("animations/test.fbx");
+  const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
   const { animations: idleAnimation } = useFBX("animations/Idle.fbx");
-  const { animations: fallingAnimation } = useFBX("animations/Falling.fbx");
   
   typingAnimation[0].name = "Typing";
   idleAnimation[0].name = "Idle";
-  fallingAnimation[0].name = "Falling";
 
   const { actions } = useAnimations(
-    [typingAnimation[0], idleAnimation[0], fallingAnimation[0]], 
+    [typingAnimation[0], idleAnimation[0]], 
     group
   );
 
@@ -64,5 +62,4 @@ export function Avatar(props) {
 
 useGLTF.preload('models/avatar.glb');
 useGLTF.preload('models/chair.glb');
-useGLTF.preload('models/desk.glb');
 useGLTF.preload('models/background.glb'); 

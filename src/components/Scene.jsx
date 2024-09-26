@@ -1,9 +1,10 @@
 import React from 'react'
 import { useGLTF, useVideoTexture } from '@react-three/drei'
+import vscodeVideo from '../assets/vscode.mp4';
 
 export default function Scene(props) {
   const { nodes, materials } = useGLTF('models/scene.glb');
-  const textureVSCode = useVideoTexture("textures/vscode.mp4");
+  const textureVSCode = useVideoTexture(vscodeVideo, { muted: true });
   
   return (
     <group {...props} dispose={null} position={[0, -2, 0]} rotation={[0.2, 1.58, -0.2]}>
