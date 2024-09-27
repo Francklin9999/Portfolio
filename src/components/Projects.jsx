@@ -1,10 +1,10 @@
 import { Image, Text } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
-
+import { Vector3 } from "three";
 import { motion } from "framer-motion-3d";
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const projects = [
     {
@@ -59,8 +59,35 @@ export default function Projects() {
   const { viewport } = useThree();
   const [currentProject] = useAtom(currentProjectAtom);
 
+  const [heightRef, setHeightRef] = useState(0);
+  const [widthRef, setWidthRef] = useState(0);
+
+  const { camera, size } = useThree(); // Get camera and canvas size from Three.js
+    
+  
+  useEffect(() => {
+    const updatePosition = () => {
+      const element = document.getElementById("RefRef");
+      if (element) {
+        const yPosition = element.getBoundingClientRect().top + window.scrollY;
+        console.log(yPosition);
+        setHeightRef(yPosition);
+      }
+    };
+  
+    setTimeout(updatePosition, 1000);
+  
+    window.addEventListener("resize", updatePosition); 
+  
+    return () => window.removeEventListener("resize", updatePosition);
+  }, []);
+  
+  
+  
+  
+
   return (
-    <group position-y={-viewport.height * 5.6 + 1}>
+    <group position-y={-viewport.height * 6 + 3}>
       {projects.map((project, index) => (
         <motion.group
           key={"project_" + index}

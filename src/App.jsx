@@ -12,6 +12,7 @@ import Cursor from './components/Cursor';
 import { Leva } from 'leva';
 import { framerMotionConfig } from './config';
 import LoadingScreen from './components/LoadingScreen';
+import Projects from './components/Projects';
 
 export const WindowWidthContext = createContext();
 
@@ -55,6 +56,7 @@ function App() {
                   <ScrollManager section={section} onSectionChange={setSection}/>
                   <Scroll>
                     {<Experience section={section} menuOpened={menuOpened}/>}
+                    <Projects />
                   </Scroll>
                   <Scroll html>
                     {started && <Interface setSection={setSection} />}

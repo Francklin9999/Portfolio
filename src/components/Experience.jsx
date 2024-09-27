@@ -104,7 +104,7 @@ export default function Experience(props) {
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
       </motion.group>
-      <Projects />
+      {/* <Projects /> */}
       
     </>
   );
