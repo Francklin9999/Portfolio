@@ -706,12 +706,15 @@ const SkillsSection = (props) => {
   ];
 
   useEffect(() => {
-    if (width < 768  === 0) {
+    if (width < 576) {
+      svgWidth = 12;
+      svgHeight = 12;
+    } else if (width < 768) {
       svgWidth = 28;
-      svgHeight = 28
+      svgHeight = 28;
     } else {
       svgWidth = 48;
-      svgHeight = 48
+      svgHeight = 48;
     }
     }, [width]);
 

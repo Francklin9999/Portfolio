@@ -52,7 +52,7 @@ function App() {
               <WindowWidthContext.Provider value={width}>
               <Canvas shadows camera={{ position: cameraPosition, rotation: cameraRotation, fov: 100 }} onCreated={({ camera }) => (cameraRef.current = camera)}>
                 <color attach="background" args={["#e6e7ff"]} />
-                <ScrollControls pages={8} damping={0.1} >
+                <ScrollControls pages={8.5} damping={0.1} >
                   <ScrollManager section={section} onSectionChange={setSection}/>
                   <Scroll>
                     {<Experience section={section} menuOpened={menuOpened}/>}

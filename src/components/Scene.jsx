@@ -1,10 +1,33 @@
-import React from 'react'
-import { useGLTF, useVideoTexture } from '@react-three/drei'
-import vscodeVideo from '../assets/vscode.mp4';
+import React, { useEffect, useState } from 'react'
+import { useGLTF, useTexture, useVideoTexture } from '@react-three/drei'
+import codingPic from '../assets/coding.png';
 
 export default function Scene(props) {
   const { nodes, materials } = useGLTF('models/scene.glb');
-  const textureVSCode = useVideoTexture(vscodeVideo, { muted: true });
+  const [texture, setTexture] = useState(useTexture(codingPic));
+
+  const isMobile = () => {
+    return window.innerWidth <= 768; 
+  };
+
+  useEffect(() => {
+    const loadAssets = async () => {
+      let videoSource, imageSource;
+
+      if (isMobile()) {
+        videoSource = await import('../assets/vscode.mp4');
+        const videoTexture = useVideoTexture(videoSource.default, { muted: true });
+        setTexture(videoTexture);
+      } else {
+        imageSource = await import('../assets/coding.png');
+        const imageTexture = useTexture(imageSource.default);
+        setTexture(imageTexture);
+      }
+    };
+
+    loadAssets();
+  }, []);
+  
   
   return (
     <group {...props} dispose={null} position={[0, -2, 0]} rotation={[0.2, 1.58, -0.2]}>
@@ -72,7 +95,7 @@ export default function Scene(props) {
             <mesh geometry={nodes['Line012_Material_#63_0'].geometry} material={materials['Material_63.001']} position={[24.23, -0.15, -28.3]} />
           </group>
           <mesh geometry={nodes.Screen.geometry} position={[-130.259, 76.774, -150.808]} rotation={[-Math.PI / 2, 0, 0]}>
-            <meshBasicMaterial map={textureVSCode} toneMapped={false} />
+            <meshBasicMaterial map={texture} />
           </mesh>
           <group position={[-70.623, 63.75, -93.395]} rotation={[0, -1.569, 0]}>
             <mesh geometry={nodes['Object008_Material_#2097633444_0'].geometry} material={materials['Material_2097633444.001']} position={[24.23, -0.15, -28.3]} />

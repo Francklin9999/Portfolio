@@ -52,6 +52,7 @@
 
 .test-test {
   height: 600vh;
+  overflow: hidden;
 }
 
 /* .container-education-section { */
@@ -271,7 +272,7 @@
 
 .skill-box,
 .language-box {
-  width: 10rem; 
+  width: 4rem; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -280,9 +281,20 @@
 
 .skill-title,
 .language-title {
-  font-size: 1.25rem; 
+  font-size: 0.8rem; 
   font-weight: bold;
   color: #1f2937; 
+}
+
+@media screen and (min-width: 577px) {
+  .skill-box,
+  .language-box {
+  width: 10rem;
+  }
+  .skill-title,
+  .language-title {
+  font-size: 1.3rem;
+  }
 }
 
 .skill-icon {
