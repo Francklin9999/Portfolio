@@ -23,7 +23,7 @@
   }
 }
 
-.containerr {
+.container-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,31 +47,40 @@
   height: 100vh;
   margin: 0;
   padding: 0;
+  z-index: 10;
 }
 
 .container-education-section {
-  top: 100vh;
-  height: 100vh;
+  /* top: 100vh;
+  height: 100vh; */
+  z-index: 8;
+  background-color: #e6e7ff;
 }
 
 .container-skills-section {
-  top: 250vh !important;
-  height: 400vh;
+  /* top: 250vh !important;
+  height: 400vh; */
   margin: 0;
   padding-top: 10vh;
+  z-index: 6;
+  background-color: #e6e7ff;
 }
 
 .container-projects-section {
-  top: 600vh;
-  height: 100vh;
+  /* top: 600vh;
+  height: 100vh; */
   margin: 0;
   padding: 0;
+  /* z-index: 4; */
+  background-color: #e6e7ff;
 }
 .container-contact-section {
-  top: 700vh;
-  height: 80vh;
+  /* top: 699vh;
+  height: 80vh; */
   margin: 0;
   padding: 0;
+  /* z-index: 2; */
+  background-color: #e6e7ff;
 }
 
 .education-section {

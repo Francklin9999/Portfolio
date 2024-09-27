@@ -8,13 +8,15 @@ import { useForm, ValidationError } from '@formspree/react';
 import './Components.css';
 import { useContext, useEffect } from "react";
 import { WindowWidthContext } from "../App";
+
+
 export default function Interface(props) {
   const { setSection } = props;
 
   const width = useContext(WindowWidthContext);
 
     return (
-        <div className="containerr">
+        <div className="container-container">
           <div className="container-about-section">
             <AboutSection setSection={setSection} />
           </div>
@@ -62,7 +64,7 @@ const AboutSection = (props) => {
             className="aboutSection-button"
             initial={{
                 opacity: 0,
-                y: 25,
+                y: 10,
             }}    
             whileInView={{
                 opacity: 1,
@@ -710,9 +712,11 @@ const SkillsSection = (props) => {
       svgHeight = 48
     }
     }, [width]);
+
+
   return (
     <Section>
-      <motion.div className="test-skills">
+      <div className="test-skills">
         <h2 className="skills-title">Skills</h2>
           {skills.map((skill, index) => ( // Fix This
             <div key={index}>
@@ -936,7 +940,7 @@ const SkillsSection = (props) => {
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </Section>
   );
 };
