@@ -1,31 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useGLTF, useTexture, useVideoTexture } from '@react-three/drei'
 import codingPic from '../assets/coding.png';
+import codingVid from '../assets/vscode.mp4';
 
 export default function Scene(props) {
   const { nodes, materials } = useGLTF('models/scene.glb');
-  const [texture, setTexture] = useState(useTexture(codingPic));
+  const initialTexture = useTexture(codingPic);
+  const [texture, setTexture] = useState(initialTexture);
+  const videoTexture = useVideoTexture(codingVid, { muted: true });
 
-  const isMobile = () => {
-    return window.innerWidth <= 768; 
-  };
-
-  useEffect(() => {
-    const loadAssets = async () => {
-      let videoSource, imageSource;
-
-      if (isMobile()) {
-        videoSource = await import('../assets/vscode.mp4');
-        const videoTexture = useVideoTexture(videoSource.default, { muted: true });
-        setTexture(videoTexture);
-      } else {
-        imageSource = await import('../assets/coding.png');
-        const imageTexture = useTexture(imageSource.default);
-        setTexture(imageTexture);
-      }
-    };
-
-    loadAssets();
+  useLayoutEffect(() => {
+    if (window.innerWidth > 768) {
+      setTexture(videoTexture);
+    }
   }, []);
   
   

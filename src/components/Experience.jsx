@@ -5,7 +5,6 @@ import { motion } from "framer-motion-3d";
 import { framerMotionConfig } from "../config";
 import { animate, useMotionValue } from 'framer-motion';
 import { Avatar } from './Avatar';
-import Projects from './Projects';
 import Scene from './Scene';
 import { WindowWidthContext } from '../App';
 
@@ -104,8 +103,6 @@ export default function Experience(props) {
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
       </motion.group>
-      {/* <Projects /> */}
-      
     </>
   );
 }
