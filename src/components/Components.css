@@ -627,9 +627,24 @@
   justify-content: center;
   padding: 1rem;
 }
-/* 
-.contacts-link-content {
-  background: 
-  radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(230, 231, 255, 0.8) 70%);
+
+/* .contacts-link-content-1 {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(230, 231, 255, 0.8) 70%);
   border-radius: 12px;
+  height: 48px;
+  width: 48px;
 } */
+
+.contacts-link-content-1 {
+  font-weight: bold;
+}
+
+.contacts-yes {
+  color: white ;
+}
+
+.contacts-no {
+  color: black ;
+}
+
+

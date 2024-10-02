@@ -52,19 +52,26 @@ export default function Experience(props) {
   const [rotationAvatar, setRotationAvatar] = useState([0, 0, -1.5]);
   const [scaleAvatar, setScaleAvatar] = useState([1.7, 1.8, 1.5]);
 
-  useEffect(() => {
-    if (section !== 0) {
-      setPositionAvatar([2, -46, 0]);
-      setRotationAvatar([0, 0, -0.8]);
-      setScaleAvatar([1.7, 1.8, 1.5]);
-      setCharacterAnimation("Idle");
-    } else {
+    useEffect(() => {
       setPositionAvatar([-0.7, -1.0, 1]);
       setRotationAvatar([0, 0, -1.5]);
       setScaleAvatar([1.7, 1.8, 1.5]);
       setCharacterAnimation("Typing");
-    }
-  }, [section]);
+  }, []);
+
+  // useEffect(() => {
+  //   if (section !== 0) {
+  //     setPositionAvatar([2.2, -42, 0]);
+  //     setRotationAvatar([0.5, 0, -0.8]);
+  //     setScaleAvatar([2, 2, 2]);
+  //     setCharacterAnimation("Idle");
+  //   } else {
+  //     setPositionAvatar([-0.7, -1.0, 1]);
+  //     setRotationAvatar([0, 0, -1.5]);
+  //     setScaleAvatar([1.7, 1.8, 1.5]);
+  //     setCharacterAnimation("Typing");
+  //   }
+  // }, [section]);
 
   useFrame((state) => {
     let curSection = Math.floor(data.scroll.current * data.pages);
