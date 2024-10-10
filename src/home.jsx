@@ -23,9 +23,9 @@ function Home() {
   async function typeLine(line) {
     for (let i = 0; i < line.length; i++) {
       document.getElementById("animatedText").innerHTML += line[i];
-      await waitForTimeout(85); 
+      await waitForTimeout(75); 
     }
-    document.getElementById("animatedText").innerHTML += '\n' + '<br class="line-break"/>'; 
+    document.getElementById("animatedText").innerHTML += '\n' + '\n'; 
     await waitForTimeout(1000); 
   }
 

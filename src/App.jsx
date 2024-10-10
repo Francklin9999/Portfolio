@@ -4,7 +4,7 @@ import Experience from './components/Experience';
 import Home from './home';
 import Interface from './components/Interface';
 import { Scroll, ScrollControls } from '@react-three/drei';
-import { createContext, Suspense, useEffect, useRef, useState } from 'react';
+import { createContext, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { MotionConfig } from "framer-motion";
 import ScrollManager from './ScrollManager';
 import Menu from './components/Menu';
@@ -20,10 +20,15 @@ function App() {
   const [section, setSection] = useState(0);
   const [started, setStarted] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(null);
   const [cameraPosition, setCameraPosition] = useState([0, 2, 4.5]);
   const [cameraRotation, setCameraRotation] = useState([0, 0, 0]);
   const cameraRef = useRef();
+
+  useLayoutEffect(() => {
+    const width = window.innerWidth;
+    setWidth(width);
+  }, [])
 
   useEffect(() => {
     const handleResize = () => {

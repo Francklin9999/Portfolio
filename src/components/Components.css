@@ -55,12 +55,12 @@
   overflow: hidden;
 }
 
-/* .container-education-section { */
+.container-education-section { 
   /* top: 100vh;
   height: 100vh; */
   /* z-index: 8; */
-  /* background-color: #e6e7ff; */
-/* } */
+  background-color: #e6e7ff;
+} 
 
 .container-skills-section {
   /* top: 250vh !important;
@@ -68,7 +68,7 @@
   margin: 0;
   padding-top: 10vh;
   /* z-index: 6; */
-  /* background-color: #e6e7ff; */
+  background-color: #e6e7ff;
 }
 
 .container-projects-section {

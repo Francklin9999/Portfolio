@@ -7,11 +7,11 @@ import { useEffect, useRef } from "react";
 
 export const projects = [
   {
-    title: "Data Dashboard",
-    url: "https://github.com/Francklin9999/Data_Dashboard_Python",
-    description: "Interactive dashboard displaying visualized data analytics and trends.",
-    img: "projects/Dashboard.png",
-    technologies: "Python, Pandas, Dash, Plotly, StatsModels, Seaborn, Excel",
+    title: "PathFinder",
+    url: "https://github.com/Francklin9999/PathFinder_Python",
+    description: "A visual representation of pathfinding algorithms using Python and Pygame.",
+    img: "projects/PathFinder.png",
+    technologies: "Python, Pygame",
   },
   {
     title: "Sorting Algorithm",
@@ -21,6 +21,13 @@ export const projects = [
     technologies: "Java, BubbleSort, HeapSort, InsertionSort, MergeSort, SelectionSort, TreeSort",
   },
   {
+    title: "FlightScraper",
+    url: "https://github.com/Francklin9999/FlightScraper",
+    description: "A web scraper that compares flight prices across multiple websites for better deals.",
+    img: "projects/FlightScraper.png",
+    technologies: "NodeJS, ExpressJS, MongoDB, Puppeteer, NextJS, React, Typescript, Docker, REST APIs",
+  },
+  {
     title: "BusTracker",
     url: "https://github.com/Francklin9999/BusTracker",
     description: "Real-time bus tracking app using WebSockets to show live positions of buses on a map.",
@@ -28,25 +35,18 @@ export const projects = [
     technologies: "Go, Gin, Angular, Typescript, Docker, AWS, Websocket, REST APIs",
   },
   {
-    title: "FlightScraper",
-    url: "https://github.com/Francklin9999/FlightScraper",
-    description: "A web scraper that compares flight prices across multiple websites for better deals.",
-    img: "projects/FlightScraper.png",
-    technologies: "NodeJS, ExpressJS, MongoDB, Puppeteer, NextJS, React, Typescript, Docker, REST APIs",
+    title: "AI Powered WebScraper",
+    url: "https://github.com/Francklin9999/AIScraperAndGenerator",
+    description: "An AI-powered web scraper that extracts information from any website and generates a custom image based on the scraped content.",
+    img: "projects/AIWebScraper.png",
+    technologies: "Python, Selenium, Ollama, FluxAi, LLMs, GenAI",
   },
-  // {
-  //   title: "AI Powered WebScraper",
-  //   url: "https://github.com/Francklin9999",
-  //   description: "Quick description adfskjhdgfkdjhfgkdjhfgldkfjglkjdflgkjdfg",
-  //   img: "projects/NotDone.png",
-  //   technologies: "Java, SpringBoot, Selenium, Ollama, LLMs, Docker, REST APIS",
-  // },
   {
-    title: "PathFinder",
-    url: "https://github.com/Francklin9999/PathFinder_Python",
-    description: "A visual representation of pathfinding algorithms using Python and Pygame.",
-    img: "projects/PathFinder.png",
-    technologies: "Python, Pygame",
+    title: "Data Dashboard",
+    url: "https://github.com/Francklin9999/Data_Dashboard_Python",
+    description: "Interactive dashboard displaying visualized data analytics and trends.",
+    img: "projects/Dashboard.png",
+    technologies: "Python, Pandas, Dash, Plotly, StatsModels, Seaborn, Excel",
   },
 ];
 

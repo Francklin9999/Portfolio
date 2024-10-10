@@ -112,8 +112,8 @@ const EducationSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <h3>University of Montreal - Polytechnique Montreal</h3>
-            <p>Expected graduation 2027 or 2028</p>
+            <h3>Université de Montréal <br /> École Polytechnique</h3>
+            <p>Expected graduation 2028</p>
             <div className="school-picture">
               <img src="schools/polymtl.png" style={{width: "270px", height: "100px"}}/>
             </div>
@@ -710,8 +710,8 @@ const SkillsSection = (props) => {
       svgWidth = 12;
       svgHeight = 12;
     } else if (width < 768) {
-      svgWidth = 28;
-      svgHeight = 28;
+      svgWidth = 24;
+      svgHeight = 24;
     } else {
       svgWidth = 48;
       svgHeight = 48;
