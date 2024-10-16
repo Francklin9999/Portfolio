@@ -62,6 +62,10 @@
   background-color: #e6e7ff;
 } 
 
+.container-work-section {
+  background-color: #e6e7ff;
+}
+
 .container-skills-section {
   /* top: 250vh !important;
   height: 400vh; */
@@ -117,6 +121,39 @@
 }
 
 .education-box p {
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.work-section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.work-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  gap: 20px; 
+}
+
+.work-box {
+  flex: 1 1 45%;
+  min-width: 300px; 
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.work-box h3 {
+  font-size: 1.2rem;
+  margin: 1rem;
+}
+
+.work-box p {
   font-size: 1rem;
   margin: 1rem;
 }

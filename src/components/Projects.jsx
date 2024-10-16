@@ -3,7 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
 import { motion } from "framer-motion-3d";
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 export const projects = [
   {
@@ -52,11 +52,17 @@ export const projects = [
 
 export const currentProjectAtom = atom(Math.floor(projects.length / 2));
 
-const scaleFactor = 4;
+let scaleFactor = 2;
 
 export default function Projects() {
   const { viewport } = useThree();
   const [currentProject] = useAtom(currentProjectAtom);
+
+  useLayoutEffect(() => {
+    if(window.innerWidth > 768) {
+      scaleFactor = 4;
+    }
+  })
 
   return (
     <group position-y={-viewport.height * 6 + 3}>

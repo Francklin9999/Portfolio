@@ -24,6 +24,9 @@ export default function Interface(props) {
           <div className="container-education-section">
               <EducationSection />
           </div>
+          <div className="container-work-section">
+              <WorkSection />
+          </div>
           <div className="container-skills-section">
               <SkillsSection width={width} />
           </div>
@@ -152,6 +155,58 @@ const EducationSection = () => {
     </Section>
   );
 };
+
+const WorkSection = () => {
+  return (
+    <Section>
+      <div className="container-fluid work-section">
+      <div className="row">
+      <h1 className="col">Work Experience</h1>
+      </div>
+      <motion.div
+        className="row work-grid"
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.5,
+          delay: 1,
+        }}
+      >
+          <motion.div
+            className="col work-box"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <h3>Software Developer</h3>
+            <p>Self-Employed</p>
+            <p>2019 - 2023</p>
+            <p>As a self-employed Full Stack Software Developer from 2019 to 2023, I designed, developed, deployed, and maintained over 20 e-commerce websites for small businesses using technologies like Next.js, Node.js, Express, Spring Boot, and MongoDB. Collaborating with a team of 3+ engineers, I built responsive and scalable platforms, achieving a 95% client satisfaction rate. I integrated Stripe for payment processing and implemented features such as inventory management, which improved operational efficiency by 80% and increased sales for some clients by up to 1000%. I deployed applications using CI/CD pipelines on GitHub, Vercel, and AWS, ensuring 100% uptime and resolved 90% of issues within 48 hours. Additionally, I managed projects and client communications, consistently delivering projects on time.</p>
+          </motion.div>
+
+          <motion.div
+            className="col work-box"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          >
+            <h3>Software Engineer</h3>
+            <p>Self-Employed</p>
+            <p>2020 - 2023</p>
+            <p>As a self-employed Software Engineer from 2020 to 2023, I specialized in developing automated sneaker purchasing systems using Node.js, Puppeteer, and Electron. I collaborated with a team to overcome site bot defenses, achieving a 90% success rate for high-demand sneaker drops. By containerizing applications with Docker, I reduced deployment times by 50%, ensuring consistent environments and performance optimization. I also managed development cycles and client communications, consistently delivering updates on schedule.</p>
+          </motion.div>
+
+      </motion.div>
+      </div>
+    </Section>
+  );
+}
 
 const SkillsSection = (props) => {
   const { width } = props;
@@ -1027,7 +1082,7 @@ const Contacts = (props) => {
       svgWidth = 48;
       svgHeight = 48
     }
-    console.log(background)
+
     }, [width]);
 
   const contacts = [
