@@ -13,6 +13,7 @@ import { Leva } from 'leva';
 import { framerMotionConfig } from './config';
 import LoadingScreen from './components/LoadingScreen';
 import Projects from './components/Projects';
+import { Analytics } from "@vercel/analytics/react";
 
 export const WindowWidthContext = createContext();
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/index" element={
           <>
+            <Analytics />
             <LoadingScreen started={started} setStarted={setStarted} />
             <MotionConfig transition={{
               ...framerMotionConfig,
