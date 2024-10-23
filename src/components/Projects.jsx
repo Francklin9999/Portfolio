@@ -14,18 +14,18 @@ export const projects = [
     technologies: "Python, Pygame",
   },
   {
-    title: "Sorting Algorithm",
-    url: "https://github.com/Francklin9999/SortingAlgorithm_Java",
-    description: "A Java application showcasing the performance of different sorting algorithms.",
-    img: "projects/SortingAlgo.png",
-    technologies: "Java, BubbleSort, HeapSort, InsertionSort, MergeSort, SelectionSort, TreeSort",
-  },
-  {
     title: "FlightScraper",
     url: "https://github.com/Francklin9999/FlightScraper",
     description: "A web scraper that compares flight prices across multiple websites for better deals.",
     img: "projects/FlightScraper.png",
     technologies: "NodeJS, ExpressJS, MongoDB, Puppeteer, NextJS, React, Typescript, Docker, REST APIs",
+  },
+  {
+    title: "Sorting Algorithm",
+    url: "https://github.com/Francklin9999/SortingAlgorithm_Java",
+    description: "A Java application showcasing the performance of different sorting algorithms.",
+    img: "projects/SortingAlgo.png",
+    technologies: "Java, BubbleSort, HeapSort, InsertionSort, MergeSort, SelectionSort, TreeSort",
   },
   {
     title: "BusTracker",
