@@ -103,7 +103,6 @@ const Project = (props) => {
     <group {...props} scale={[scaleFactor, scaleFactor, 1]}>
       <mesh
         position-z={-0.001}
-        onClick={() => window.open(project.url, "_blank")}
         ref={background}
       >
         <planeGeometry args={[2.2, 2]} />

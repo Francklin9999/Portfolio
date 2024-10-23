@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { useGLTF, useTexture, useVideoTexture } from '@react-three/drei'
 import codingPic from '../assets/coding.png';
 import codingVid from '../assets/vscode.mp4';

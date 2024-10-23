@@ -4,12 +4,11 @@ import Experience from './components/Experience';
 import Home from './home';
 import Interface from './components/Interface';
 import { Scroll, ScrollControls } from '@react-three/drei';
-import { createContext, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { MotionConfig } from "framer-motion";
 import ScrollManager from './ScrollManager';
 import Menu from './components/Menu';
 import Cursor from './components/Cursor';
-import { Leva } from 'leva';
 import { framerMotionConfig } from './config';
 import LoadingScreen from './components/LoadingScreen';
 import Projects from './components/Projects';
@@ -22,8 +21,9 @@ function App() {
   const [started, setStarted] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
   const [width, setWidth] = useState(null);
-  const [cameraPosition, setCameraPosition] = useState([0, 2, 4.5]);
-  const [cameraRotation, setCameraRotation] = useState([0, 0, 0]);
+
+  const cameraPosition = [0, 2, 4.5];
+  const cameraRotation = [0, 0, 0];
   const cameraRef = useRef();
 
   useLayoutEffect(() => {
@@ -74,7 +74,6 @@ function App() {
               <Cursor />
               </WindowWidthContext.Provider>
             </MotionConfig>
-            <Leva hidden />
           </>
         } />
       </Routes>
