@@ -1,0 +1,50 @@
+.line-break {
+  margin-bottom: 50%;
+}
+
+.animatedtext::after {
+  content: '|';
+  animation: cursor-blink 1.5s infinite step-start;
+  margin-left: 5px;
+}
+
+.animatedtext {
+  margin: 5.5rem 0 0 3%;
+  align-self: top;
+  position: relative;
+  color: white;
+  font-size: 1.4rem;
+  font-family: monospace;
+  white-space: pre-wrap;
+  overflow: hidden; 
+}
+
+@media screen and (min-width: 768px) {
+  .animatedtext{
+    margin-top: 8rem;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: rgb(212, 10, 10);
+  animation: cursor-blink 0.7s infinite step-start;
+  vertical-align: bottom; 
+}
+
+@keyframes cursor-blink {
+  50% {
+      opacity: 0;
+  }
+}
+
+.homeContainer {
+  background-color: #0a0a23;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  color: white;
+}
