@@ -40,11 +40,67 @@
 }
 
 .home-container {
+  height: 100vh;
+}
+
+.home-text-container {
   background-color: #0a0a23;
   margin: 0;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: start;
   align-items: start;
   color: white;
 }
+
+.home-skip-button {
+  position:absolute;
+  bottom: 40px; 
+  right: 40px;  
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.6rem;
+  z-index: 10; 
+  font-weight: 700;
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .home-skip-button {
+    font-size: 1rem;
+  }
+}
+
+.home-skip-button:hover {
+  background: #c4e201;
+}
+
+.home-skip-button > svg {
+  width: 22px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .home-skip-button > svg {
+    width: 34px;
+  }
+}
+
+.home-skip-button:hover svg {
+  transform: translateX(5px);
+}
+
+.home-skip-button:active {
+  transform: scale(0.95);
+}
+
+

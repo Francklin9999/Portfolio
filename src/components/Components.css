@@ -691,6 +691,12 @@
   opacity: 0.4; 
 }
 
+.loading-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  
+}
+
 .contacts-link {
   display: flex;
   align-items: center;
