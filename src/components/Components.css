@@ -692,9 +692,15 @@
 }
 
 .loading-message {
-  font-size: 1.5rem;
+  font-size: 0.8rem;
   font-weight: bold;
-  
+  color: #0f1013;
+}
+
+@media screen and (min-width: 768px) {
+  .loading-message {
+    font-size: 1.2rem;
+  }
 }
 
 .contacts-link {

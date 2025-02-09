@@ -22,7 +22,7 @@ export default function LoadingScreen(props) {
             <div className="loading-overlay">Franck Fongang</div>
         </div>
         <p>Loading...</p>
-        <p className="loading-message">Since I'm on a free plan and render 3d graphics, loading can take some time.</p>
+        <p className="loading-message">**Since I'm on a free plan and render 3d graphics, loading can take some time.**</p>
         </div>
     );
 }
