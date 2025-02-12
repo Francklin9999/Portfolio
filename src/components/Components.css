@@ -92,6 +92,24 @@
   /* background-color: #e6e7ff; */
 }
 
+.contact-caption {
+  margin: 10rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contact-caption > p {
+  margin: 20px;
+  font-size: 1.5rem;
+  color:#1f18a7;
+  font-weight: bold;
+  font-family: 'Lobster', cursive;
+
+
+}
+
 .education-section {
   height: 100%;
   width: 100%;
@@ -115,13 +133,39 @@
   text-align: center;
 }
 
+.work-box h3 {
+  font-size: 0.8rem;
+  margin: 0.7rem;
+}
+
+.work-box p {
+  font-size: 0.6rem;
+  margin: 0.7rem;
+}  
+
+.work-box li {
+  font-size: 0.6rem;
+}
+
+@media screen and (min-width: 768px) {
+  .education-box h3 {
+    font-size: 1.2rem;
+    margin: 1rem;
+  }
+  
+  .education-box p {
+    font-size: 1rem;
+    margin: 1rem;
+  }
+}
+
 .education-box h3 {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   margin: 1rem;
 }
 
 .education-box p {
-  font-size: 1rem;
+  font-size: 0.6rem;
   margin: 1rem;
 }
 
@@ -138,25 +182,58 @@
   display: flex;
   flex-wrap: wrap; 
   justify-content: space-between; 
-  gap: 20px; 
 }
 
 .work-box {
-  flex: 1 1 45%;
-  min-width: 300px; 
-  margin-bottom: 20px;
+  /* flex: 1 1 45%; */
+  margin-bottom: 10px;
   text-align: center;
 }
 
+.work-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .work-box h3 {
-  font-size: 1.2rem;
-  margin: 1rem;
+  font-size: 0.8rem;
+  margin: 0.7rem;
 }
 
 .work-box p {
-  font-size: 1rem;
-  margin: 1rem;
+  font-size: 0.6rem;
+  margin: 0.7rem;
+}  
+
+.work-box li {
+  font-size: 0.6rem;
 }
+
+@media screen and (min-width: 768px) {
+  .work-title {
+    font-size: 1.3rem;
+  }
+  
+  .work-box li {
+    font-size: 1rem;
+  }
+
+  .work-box {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .work-box h3 {
+    font-size: 1.2rem;
+    margin: 1rem;
+  }
+  
+  .work-box p {
+    font-size: 1rem;
+    margin: 1rem;
+  }  
+}
+
 
 .aboutSection-Intro {
   font-size: 2.25rem; 
@@ -166,7 +243,7 @@
   color: white;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .aboutSection-Intro {
     font-size: 3.75rem; 
     margin-top: 0;
@@ -191,6 +268,24 @@
   margin-top: 1rem;
 }
 
+.aboutSection-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutSection-caption > p {
+  font-weight: bold;
+  font-size: 1.125rem; 
+  color: #e08c39;
+  background-color: rgba(6, 5, 5, 0.2);
+  border-radius: 12px;
+  padding: 0.5rem; 
+  font-family: "Trattatello", "fantasy";
+  text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
 .aboutSection-button {
   background-color: #4F46E5; 
   color: white;
@@ -204,7 +299,7 @@
   margin-top: 1rem; 
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .aboutSection-button {
     margin-top: 4rem; 
   }
@@ -235,18 +330,18 @@
 
 .skill-content h2 {
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 @media screen and (min-width: 577px) {
   .skill-content h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
 @media screen and (min-width: 768px) {
   .skill-content h2 {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -263,12 +358,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.skills-title,
-.languages-title {
-  font-size: 3rem; 
-  font-weight: bold;
 }
 
 .language-box {
@@ -332,6 +421,26 @@
   width: 100%;
 }
 
+.skills-title,
+.languages-title {
+  font-size: 1rem; 
+  font-weight: bold;
+}
+
+@media screen and (min-width: 577px) {
+  .skills-title,
+  .languages-title {
+  font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .skills-title,
+  .languages-title {
+    font-size: 1.7rem;
+    }
+}
+
 .skill-box,
 .language-box {
   width: 4rem; 
@@ -343,7 +452,7 @@
 
 .skill-title,
 .language-title {
-  font-size: 0.6rem; 
+  font-size: 0.5rem; 
   font-weight: bold;
   color: #1f2937; 
 }
@@ -355,7 +464,7 @@
   }
   .skill-title,
   .language-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   }
 }
 
@@ -695,6 +804,7 @@
   font-size: 0.8rem;
   font-weight: bold;
   color: #0f1013;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -706,7 +816,7 @@
 .contacts-link {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: left;
   flex-wrap: wrap;
 }
 

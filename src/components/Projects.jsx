@@ -28,6 +28,20 @@ export const projects = [
     technologies: "Java, BubbleSort, HeapSort, InsertionSort, MergeSort, SelectionSort, TreeSort",
   },
   {
+    title: "PolyHacks 2025",
+    url: "https://github.com/Francklin9999/Polyhacks2025",
+    description: "24 hours to build an informative web app about space, explore our solar system and create your own planet.",
+    img: "projects/PolyHacks2025.png",
+    technologies: "JavaScript, React, ThreeJS, Tailwind CSS, Vite, Vercel",
+  },
+  {
+    title: "Datathon 2024",
+    url: "https://github.com/Francklin9999/Datathon_2024_PolyMTL",
+    description: "24 hours to build a financial stock analysis platform using AI to predict the market.",
+    img: "projects/Datathon2024.png",
+    technologies: "Python, AWS, EC2, GENAI, Streamlit, Langchain, Finance APIs",
+  },
+  {
     title: "BusTracker",
     url: "https://github.com/Francklin9999/BusTracker",
     description: "Real-time bus tracking app using WebSockets to show live positions of buses on a map.",

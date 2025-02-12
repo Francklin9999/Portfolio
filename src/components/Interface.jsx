@@ -46,7 +46,10 @@ const AboutSection = (props) => {
 
   return (
     <Section mobileTop>
-        <h1 className="aboutSection-Intro">Hi, I'm <br /> <span className="aboutSection-Intro-Name">Franck Fongang</span></h1>
+      <div className="row">
+      <div className="col">
+        <h1 className="aboutSection-Intro">Hi, I'm <br /> <span className="aboutSection-Intro-Name">Franck Fongang</span>
+        </h1>
         <motion.p 
             className="aboutSection-description"
             initial={{
@@ -64,6 +67,11 @@ const AboutSection = (props) => {
         >
             I'm a software developer with a passion for building <br /> innovative and user-friendly applications.
         </motion.p>
+        </div>
+        <div className="col aboutSection-caption">
+          <p>If coding is just writing code, I’ve done more. But if it’s about <br /> solving problems and innovating, I’ve been doing that from the start.</p>
+        </div>
+        </div>
         <motion.button 
           onClick={() => setSection(8)}
             className="aboutSection-button"
@@ -92,7 +100,7 @@ const EducationSection = () => {
     <Section>
       <div className="container-fluid education-section">
       <div className="row">
-      <h1 className="col">Education</h1>
+      <h1 className="col skills-title">Education</h1>
       </div>
       <motion.div
         className="row education-grid"
@@ -161,7 +169,7 @@ const WorkSection = () => {
     <Section>
       <div className="container-fluid work-section">
       <div className="row">
-      <h1 className="col">Work Experience</h1>
+      <h1 className="col work-title">Work Experience</h1>
       </div>
       <motion.div
         className="row work-grid"
@@ -177,7 +185,22 @@ const WorkSection = () => {
           duration: 0.5,
           delay: 1,
         }}
-      >
+      >          
+          <motion.div
+            className="col work-box"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <h3>Machine Learning Engineer Intern</h3>
+            <p>Trolet</p>
+            <p>2024-present</p>
+            <ul>
+              <li>Customized machine learning models using TensorFlow and PyTorch to enhance product identification, tracking, and categorization, speeding up listings by 10x.</li>
+              <li>Developed algorithms and built a pipeline for automating pricing analysis, image enhancement, and product management for e-commerce platforms.</li>
+              <li>Collaborated with engineers and marketers to create seamless solutions, leading to a 100% sales increase and improved operational efficiency.</li>
+            </ul>
+          </motion.div>
           <motion.div
             className="col work-box"
             initial={{ opacity: 0, y: 25 }}
@@ -187,7 +210,11 @@ const WorkSection = () => {
             <h3>Software Developer</h3>
             <p>Self-Employed</p>
             <p>2019 - 2023</p>
-            <p>As a self-employed Full Stack Software Developer from 2019 to 2023, I designed, developed, deployed, and maintained over 20 e-commerce websites for small businesses using technologies like Next.js, Node.js, Express, Spring Boot, and MongoDB. Collaborating with a team of 3+ engineers, I built responsive and scalable platforms, achieving a 95% client satisfaction rate. I integrated Stripe for payment processing and implemented features such as inventory management, which improved operational efficiency by 80% and increased sales for some clients by up to 1000%. I deployed applications using CI/CD pipelines on GitHub, Vercel, and AWS, ensuring 100% uptime and resolved 90% of issues within 48 hours. Additionally, I managed projects and client communications, consistently delivering projects on time.</p>
+            <ul>
+              <li>Designed, developed, deployed, and maintained over 20 e-commerce websites for small businesses using Next.js, Node.js, Express, Spring Boot, and MongoDB, achieving a 95% client satisfaction rate.</li>
+              <li>Integrated Stripe for payment processing, implemented inventory management features, improving operational efficiency by 80% and increasing sales for some clients by up to 1000%.</li>
+              <li>Deployed applications using CI/CD pipelines on GitHub, Vercel, and AWS, ensuring 100% uptime, resolving 90% of issues within 48 hours, and managing client communications to deliver projects on time.</li>
+            </ul>
           </motion.div>
 
           <motion.div
@@ -199,7 +226,11 @@ const WorkSection = () => {
             <h3>Software Engineer</h3>
             <p>Self-Employed</p>
             <p>2020 - 2023</p>
-            <p>As a self-employed Software Engineer from 2020 to 2023, I specialized in developing automated sneaker purchasing systems using Node.js, Puppeteer, and Electron. I collaborated with a team to overcome site bot defenses, achieving a 90% success rate for high-demand sneaker drops. By containerizing applications with Docker, I reduced deployment times by 50%, ensuring consistent environments and performance optimization. I also managed development cycles and client communications, consistently delivering updates on schedule.</p>
+            <ul>
+              <li>Specialized in developing automated sneaker purchasing systems using Node.js, Puppeteer, and Electron, achieving a 90% success rate for high-demand sneaker drops.</li>
+              <li>Collaborated with a team to overcome site bot defenses and containerized applications with Docker, reducing deployment times by 50% and ensuring consistent environments.</li>
+              <li>Managed development cycles and client communications, consistently delivering updates on schedule.</li>
+            </ul>
           </motion.div>
 
       </motion.div>
@@ -1060,6 +1091,8 @@ const ContactSection = () => {
   
   return (
     <Section>
+      <div className="row">
+      <div className="col">
       <h2 className="contact-title">Contact me</h2>
       <Contacts />
       <div className={`contact-form ${state.succeeded ? 'success' : ''}`}>
@@ -1078,6 +1111,12 @@ const ContactSection = () => {
             <button disabled={state.submitting} className="submit-button">Submit</button>
           </form>
         )}
+      </div>
+      </div>
+      <div className="col contact-caption">
+        <p>Technology evolves, and so do I. If it’s new, I’ll learn it. If it’s complex, I’ll break it down. If it’s impossible, I’ll find a way.</p>
+        <p>Franck: Breaking boundaries, where nothing is out of reach.</p>
+      </div>
       </div>
     </Section>
   );
