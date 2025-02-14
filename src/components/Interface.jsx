@@ -68,9 +68,9 @@ const AboutSection = (props) => {
             I'm a software developer with a passion for building <br /> innovative and user-friendly applications.
         </motion.p>
         </div>
-        <div className="col aboutSection-caption">
+        {/* <div className="col aboutSection-caption">
           <p>If coding is just writing code, I’ve done more. But if it’s about <br /> solving problems and innovating, I’ve been doing that from the start.</p>
-        </div>
+        </div> */}
         </div>
         <motion.button 
           onClick={() => setSection(8)}
@@ -1092,7 +1092,7 @@ const ContactSection = () => {
   return (
     <Section>
       <div className="row">
-      <div className="col">
+      <div className="col contact-main-container">
       <h2 className="contact-title">Contact me</h2>
       <Contacts />
       <div className={`contact-form ${state.succeeded ? 'success' : ''}`}>

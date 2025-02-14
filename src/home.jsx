@@ -55,7 +55,7 @@ function Home() {
       <div className="animated-text" id="animatedText"></div>
       <div className="cursor" id="cursor"></div>
     </div>
-    <div>
+    {/* <div>
       <button className="home-skip-button" onClick={() => skipToMainPage()}>
         <span>Skip to main page</span>
         <svg
@@ -72,7 +72,7 @@ function Home() {
           ></path>
         </svg>
         </button>
-    </div>
+    </div> */}
     </div>
   );
 }
